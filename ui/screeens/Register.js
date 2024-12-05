@@ -49,6 +49,7 @@ export default function Register({navigation}){
                 <TextInput
                     mode='outlined'
                     label={AppStrings.name}
+                    placeholder={AppStrings.name}
                     value={name}
                     onChangeText={name => onChangeName(name)}
                     style={styles.input}
@@ -58,12 +59,14 @@ export default function Register({navigation}){
                     textColor={AppColors.whiteColor}
                     placeholderTextColor={AppColors.placeholderColor}
                     returnKeyType='next'
+                    autoFocus={true}
                 />
                 <VerticalSpacer height={20}/>
                 <TextInput
                     textColor={AppColors.whiteColor}
                     mode='outlined'
                     label={AppStrings.emailCreateAcc}
+                    placeholder={AppStrings.emailCreateAcc}
                     value={email}
                     onChangeText={email => onChangeEmail(email)}
                     style={styles.input}
@@ -77,6 +80,7 @@ export default function Register({navigation}){
                 <TextInput
                     mode='outlined'
                     label={AppStrings.passwordCreateAcc}
+                    placeholder={AppStrings.passwordCreateAcc}
                     value={password}
                     onChangeText={password=> onChangePassword(password)}
                     activeOutlineColor={AppColors.primaryColor}
@@ -112,9 +116,18 @@ export default function Register({navigation}){
                 <View style={styles.buttonContainer}>
                     <PrimaryButton onClick={
                         ()=> {
-                            handleButtonClick()
+                            navigation.dispatch(
+                                CommonActions.reset({
+                                    index: 0, // Index of the active route in the new stack
+                                    routes: [
+                                        { name: 'Home Screen' }, // The screen to navigate to
+                                    ],
+                                })
+                            );
                         }
-                    }>
+                    }
+                                   disabled={email===""|| name==="" || password==="" }
+                    >
                         <Text style={styles.buttonText}>
                             {AppStrings.register}
                         </Text>

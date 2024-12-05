@@ -12,7 +12,7 @@ export default function PrimaryButton({children, onClick, bgColor, disabled}) {
             paddingVertical: Dimensions.buttonPaddingVertical,
             paddingHorizontal: Dimensions.buttonPaddingHorizontal,
             borderRadius: Dimensions.buttonCornerRadius,
-            backgroundColor: !disabledBool ? backgroundColor: AppColors.midGray,
+            backgroundColor: !disabledBool ? backgroundColor: AppColors.buttonDisabledColor,
             justifyContent:'center',
             shadowColor: '#171717',
             shadowOffset: {width: 0, height: 0},

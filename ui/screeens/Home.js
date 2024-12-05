@@ -17,11 +17,16 @@ export default function Home({ navigation }) {
 
     // Mock Parking Data
     const parkingData = [
-        "Z Park Garage A",
+        "Z Park Garage",
         "Comerica Garage",
         "700 Randolph St Parking",
         "Trolley Plaza",
         "SP+ Parking",
+        "Greektown Garage",
+        "Financial District Garage",
+        "One Detroit Center Garage",
+        "Two Detroit Garage",
+        "Buhl Garage"
     ];
 
     // Function to get the user's current location
@@ -109,12 +114,13 @@ export default function Home({ navigation }) {
                 {filteredOptions.length > 0 && (
                     <FlatList
                         data={filteredOptions}
-                        keyExtractor={(item, index) => index.toString()}
+                        keyExtractor={(item, index) => index.toString()} // Key is extracted for FlatList's optimization
                         renderItem={({ item }) => (
                             <TouchableOpacity
                                 style={styles.option}
                                 onPress={() => handleOptionSelect(item)}
                             >
+                                {/* Do not spread the key prop here */}
                                 <Text style={styles.optionText}>{item}</Text>
                             </TouchableOpacity>
                         )}

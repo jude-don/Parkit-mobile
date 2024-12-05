@@ -49,6 +49,7 @@ export default function Login({navigation}) {
                     textColor={AppColors.whiteColor}
                     mode='outlined'
                     label={AppStrings.emailLogin}
+                    placeholder={AppStrings.emailLogin}
                     value={email}
                     onChangeText={email => onChangeEmail(email)}
                     style={styles.input}
@@ -57,12 +58,14 @@ export default function Login({navigation}) {
                     keyboardType='email-address'
                     placeholderTextColor={AppColors.placeholderColor}
                     returnKeyType='next'
+                    autoFocus={true}
                 />
                 <VerticalSpacer height={20}/>
                 <TextInput
                     mode='outlined'
                     label={AppStrings.passwordLogin}
                     value={password}
+                    placeholder={AppStrings.passwordLogin}
                     onChangeText={password=> onChangePassword(password)}
                     activeOutlineColor={AppColors.primaryColor}
                     outlineColor={AppColors.whiteColor}
@@ -106,7 +109,9 @@ export default function Login({navigation}) {
                                 })
                             );
                         }
-                    }>
+                    }
+                                   disabled={email===""|| password==="" }
+                    >
                         <Text style={styles.buttonText}>
                             {AppStrings.login}
                         </Text>
@@ -143,6 +148,7 @@ const styles = StyleSheet.create({
         color: AppColors.whiteColor,
         textAlign:'left',
         fontWeight: 600,
+
     },
     input:{
         fontFamily: 'Lato_400Regular',

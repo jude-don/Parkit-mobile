@@ -5,7 +5,7 @@ export default class AppColors {
     static greenHighlight ='#00FF77';
     static mildRed = '#8C7C7C';
     static noSpotAvailable = '#5F5F5F';
-    static buttonDisabledColor = 'rgba(163,163,163,0.3)';
+    static buttonDisabledColor = 'rgba(163,163,163,0.1)';
     static unavailableSpotColor = '#2A2A2A';
     static selectedCheckedBoxColor = '#078D79';
     static placeholderColor = 'rgba(255,255,255,0.5)';
