@@ -34,10 +34,10 @@ export default class AppStrings {
 
     //Rate
     static parkingRateTitle = "Parking Rate";
-    static firstRate = "0 to 30 minutes";
+    static firstRate = "Every 1 hour";
     static secondRate = "1 to 2 hours";
     static thirdRate = "3+ hours";
-    static firstRateCharge = "Free";
+    static firstRateCharge = "$10.00";
     static secondRateCharge = "$15.00";
     static thirdRateCharge = "$25.00";
     static confirmSpot = "Confirm Spot";

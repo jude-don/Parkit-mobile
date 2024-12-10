@@ -20,18 +20,22 @@ export default function EndSession({route, navigation}) {
     const endParking = async () => {
         setLoading(true); // Show loader
         try {
-            const response = await axios.get(
+            const response = await axios.put(
                 `https://m0gq6dwzaf.execute-api.us-east-1.amazonaws.com/dev/Parking/${spotId}`
             );
-            setAmount(response.data.finalPrice); // Set the amount
+
+            const finalPrice = response.data.finalPrice; // Extract finalPrice
+            setAmount(finalPrice); // Update state for UI purposes (optional)
             setSpotId(""); // Clear the spotId
-            navigation.navigate("Payment Portal Screen", {amount: amount.toString()}); // Navigate to payment screen with amount
+            navigation.navigate("Payment Portal Screen", { amount: finalPrice.toString() }); // Use the response directly
         } catch (error) {
             console.error("Error ending parking session:", error);
+            alert("An error occurred while ending the parking session. Please try again.");
         } finally {
             setLoading(false); // Hide loader
         }
     };
+
 
     return (
         <View style={styles.container}>

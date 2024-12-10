@@ -16,15 +16,27 @@ export default function YourSpot({route, navigation}) {
     const recordParking = async () => {
         setLoading(true); // Show loader before API call
         try {
-            await axios.get(`https://m0gq6dwzaf.execute-api.us-east-1.amazonaws.com/dev/Parking/${spotId}`);
-            // Navigate to the next screen after API call success
-            navigation.navigate("End Session Screen", {parkingOption, spotId, data});
+            const response = await axios.put(
+                `https://m0gq6dwzaf.execute-api.us-east-1.amazonaws.com/dev/Parking/${spotId}`
+            );
+
+            // Validate the response payload
+            if (response.data && response.data.message === "User assigned to parking spot successfully.") {
+                // Navigate to the next screen after API call success
+                navigation.navigate("End Session Screen", { parkingOption, spotId, data });
+            } else {
+                console.error("Unexpected API response:", response.data);
+                alert("Failed to assign parking spot. Please try again.");
+            }
         } catch (error) {
             console.error("Error fetching data:", error);
+            alert("An error occurred while assigning the parking spot. Please try again.");
         } finally {
             setLoading(false); // Hide loader after API call
         }
     };
+
+
 
     return (
         <View style={styles.container}>
@@ -64,7 +76,12 @@ export default function YourSpot({route, navigation}) {
                         <ActivityIndicator size="large" color={AppColors.primaryColor} />
                     ) : (
                         <PrimaryButton
-                            onClick={() => recordParking()}
+                            onClick={
+                            () =>
+                            {
+                                recordParking()
+                            }
+                        }
                             disabled={spotId === ""}
                         >
                             <Text style={styles.buttonText}>

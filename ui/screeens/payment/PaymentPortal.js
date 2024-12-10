@@ -23,6 +23,9 @@ export default function PaymentPortal({ route, navigation }) {
     const handleButtonClick = () => {
         console.log("Pay button clicked, navigate to the next step");
     };
+    // Format amount to 4 decimal places
+    const formattedAmount = parseFloat(amount).toFixed(4);
+
 
     return (
         <View style={styles.container}>
@@ -38,7 +41,7 @@ export default function PaymentPortal({ route, navigation }) {
                     {AppStrings.paymentInfo}
                 </Text>
                 <Text style={styles.amountText}>
-                    {amount}
+                    {formattedAmount}
                 </Text>
 
                 {/* Payment Options */}

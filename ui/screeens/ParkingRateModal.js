@@ -28,14 +28,6 @@ export default function ParkingRateModal({ visible, onClose, onConfirm, spotID }
                             <Text style={styles.rateText}>{AppStrings.firstRate}</Text>
                             <Text style={styles.rateText}>{AppStrings.firstRateCharge}</Text>
                         </View>
-                        <View style={styles.rateRow}>
-                            <Text style={styles.rateText}>{AppStrings.secondRate}</Text>
-                            <Text style={styles.rateText}>{AppStrings.secondRateCharge}</Text>
-                        </View>
-                        <View style={styles.rateRow}>
-                            <Text style={styles.rateText}>{AppStrings.thirdRate}</Text>
-                            <Text style={styles.rateText}>{AppStrings.thirdRateCharge}</Text>
-                        </View>
                         <TouchableOpacity style={styles.confirmButton} onPress={onConfirm}>
                             <Text style={styles.confirmButtonText}>
                                 {AppStrings.confirmSpot}
